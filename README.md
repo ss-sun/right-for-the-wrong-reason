@@ -3,6 +3,7 @@ Official implementation for MICCAI 2023 paper: **Right for the Wrong Reason: Can
 [Arxiv Paper](https://arxiv.org/abs/2307.12344)
 
 ## Overview of Experiment settings
+Deep neural networks tend to learn spurious correlations instead of using class-relevant features. When deploying such models on the test set that has a different distribution, the classification performance drops significantly as shown in the figure below.
 
 <div style="displaystyle=block;align=center;"><p align="center" >
   <img src="figs/classification.png"/ width="60%" height="60%">
@@ -10,8 +11,9 @@ Official implementation for MICCAI 2023 paper: **Right for the Wrong Reason: Can
 </div>
 
 
-
-We evaluated both post-hoc explanation methods and the inherently interpretable model in detecting the spurious signals the model used.
+We performed a rigorous evaluation of post-hoc explanations and inherently interpretable techniques for the detection of spurious correlations in a medical imaging task.
+* We designed three kinds of spurious signals named "Tag", "Hyperintensities" and "Obstruction" and contaminated the positive samples in the train set with ratios of 20%, 50%, 80% and 100%.
+* We designed two novel metrics named "Confounder Sensitivity" and "Explanation NCC" to evaluate five post-hoc explanation methods and one inherently interpretable model in their ability to detect the spurious signal.
 
 <div style="displaystyle=block;align=center;"><p align="center" >
   <img src="figs/overview.png"/ width="75%" height="75%">
@@ -21,13 +23,15 @@ We evaluated both post-hoc explanation methods and the inherently interpretable 
 
 
 ## Results
+We evaluated the explanation methods and model both qualitatively and quantitatively.
+
 <div style="displaystyle=block;align=center;"><p align="center" >
-  <img src="figs/different_scale.png"/ width="75%" height="75%">
+  <img src="figs/different_scale.png"/ width="60%" height="60%">
   </p>
 </div>
 
 <div style="displaystyle=block;align=center;"><p align="center" >
-  <img src="figs/exp_results.png"/ width="75%" height="75%">
+  <img src="figs/exp_results.png"/ width="60%" height="60%">
   </p>
 </div>
 
