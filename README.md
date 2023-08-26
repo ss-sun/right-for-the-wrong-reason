@@ -2,6 +2,10 @@
 Official implementation for MICCAI 2023 paper: **Right for the Wrong Reason: Can Interpretable ML Techniques Detect Spurious Correlations?**
 [Arxiv Paper](https://arxiv.org/abs/2307.12344)
 
+**Note**: For any questions regarding the paper and code, contact Susu Sun with susu.sun@uni-tuebingen.de.
+
+
+
 ## Overview of Experiment settings
 We performed a rigorous evaluation of post-hoc explanations and inherently interpretable techniques for the detection of spurious correlations in a medical imaging task.
 * We designed three kinds of spurious signals named "Tag", "Hyperintensities" and "Obstruction" and contaminated the positive samples in the train set with ratios of 0%, 20%, 50%, 80%, and 100%.
@@ -44,11 +48,12 @@ It is also possible to perform on dataset VinDr-CXR (https://vindr.ai/datasets/c
 * Train ResNet50 or Attri-Net by setting the parameter ```which_model``` to ```resnet``` or ```attrinet``` in ```main.py```. E.g. ```python3 main.py --dataset chexpert --contaminated_class "Cardiomegaly" --contaim_type hyperintensities --contaim_scale 2```
 
 **Step 3**: Generate confounder masks and select the flipped samples to prepare for the evaluation.
-* 
+* Run ```create_confounder_mask.py``` to create ground truth confounder masks for three signals "Tag", "Hyperintensities" and "Obstruction".
+* Set the trained models' path in ```models_dict.py```, and run ```select_flip_prediction_samples.py``` to select the flipped prediction samples.
 
-
-
-
+**Step 4**: Perform evaluations of XAI methods.
+* Run ```create_results_dict.py``` to create a result dictionary for collecting all the evaluation results.
+* Evaluate the classification performance with ```eval_auc.py```. Evaluate the explanation NCC and confounder sensitivity with ```spurious_detection_eval.py```.
 
 
 ## Results
